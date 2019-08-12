@@ -16,7 +16,7 @@ router.post('/join', async (ctx, next) => {
 })
 
 router.post('/login', async(ctx, next) => {
-    await passport.authenticate('local', function (err, user) {
+    await passport.authenticate('local', (err, user) => {
         if (user == false) {
             ctx.body = "Login failed";
         } else {

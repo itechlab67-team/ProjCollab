@@ -15,6 +15,8 @@ const networks = ['github', 'google', 'facebook'];
 
 export default class Authentication extends Component {
     state = {
+        password: '',
+        email: '',
         formIsValid: false
     }
     handleUserInput = (name, value, isValid) => {
@@ -27,7 +29,18 @@ export default class Authentication extends Component {
     }
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSubmit(this.state);
+        if (this.state.password === '') {
+
+        } else {
+            if (this.state.email === '') {
+
+            } else {
+                if (this.state.password.isValid && this.state.email.isValid) {
+                    this.props.onSubmit({ email: this.state.email.value, password: this.state.password.value });
+                } else {
+                }
+            }
+        }
     }
     render() {
         return(
