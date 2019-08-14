@@ -1,0 +1,26 @@
+{
+    "name": "collaboration-project",
+    "version": "1.0.0",
+    "description": "React.js + Node.js + Mongo app",
+    "main": "index.js",
+    "scripts": {
+        "server": "npm start --prefix server",
+        "client": "npm start --prefix client",
+        "start": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/IlyaSavelyev/collaboration-project.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/IlyaSavelyev/collaboration-project/issues"
+    },
+    "homepage": "https://github.com/IlyaSavelyev/collaboration-project#readme",
+    "devDependencies": {
+        "concurrently": "^4.1.1",
+        "nodemon": "^1.19.1"
+    }
+}
