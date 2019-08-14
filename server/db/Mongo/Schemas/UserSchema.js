@@ -1,43 +1,34 @@
 import mongoose from 'mongoose';
-import crypto from 'crypto';
+import bcrypt from 'bcrypt-nodejs';
 
-const UserSchema = new mongoose.Schema({
-    username: String,
-    email: {
-        type: String,
-        required: 'Enter the email',
-        unique: 'This email is already exist'
-    },
-    passwordHash: String,
-    salt: String
-}, {
-    timestamps: true
+const Schema = mongoose.Schema;
+const userSchema = new Schema({
+    email: { type: String, unique: true, lowercase: true },
+    password: String
 });
 
-UserSchema.virtual('password')
-    .set(password => {
-        this._plainPassword = password;
-        if (password) {
-            this.salt = crypto.randomBytes(128).toString('base64');
-            this.passwordHash = crypto.pbkdf2Sync(password, this.salt, 1, 128, 'sha1');
-        } else {
-            this.salt = undefined;
-            this.passwordHash = undefined;
+userSchema.pre('save', function(next) {
+    var user = this;
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) return next(err);
+        bcrypt.hash(user.password, salt, null, (err, hash) => {
+            if (err) return next(err);
+            user.password = hash;
+            next();
+        });
+    });
+});
+
+userSchema.methods.comparePassword = function (candidatePassword, callback) {
+    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+        console.log(this.password, ' ', isMatch)
+        if (err) { 
+            return callback(err);
         }
-    })
-    .get(() => {
-        return this._plainPassword;
-    })
-UserSchema.methods.checkPassword = password => {
-    if (!password) {
-        return false;
-    }
-    if (!this.passwordHash) {
-        return false;
-    }
-    return crypto.pbkdf2Sync(password, this.salt, 1, 128, 'sha1') == this.passwordHash;
+        callback(null, isMatch);
+    });
 };
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('user', userSchema);
 
 export default User;

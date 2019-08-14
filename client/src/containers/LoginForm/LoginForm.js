@@ -23,9 +23,8 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => {
-    // const { isLoginPending, isLoginSuccess, isLoginFailed } = state;
-    // return { isLoginPending, isLoginSuccess, isLoginFailed };
-    return state;
+    const { isLoginPending, isLoginSuccess, isLoginFailed } = state;
+    return { isLoginPending, isLoginSuccess, isLoginFailed };
 }
 
 export default connect(mapStateToProps)(LoginForm);

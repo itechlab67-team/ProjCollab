@@ -11,10 +11,14 @@ import dotenv from 'dotenv';
 import socketIO from 'socket.io';
 import passportInit from './routes/passport.init';
 import routes from './routes/auth.routes/auth.router.networks';
+import routesLocal from './routes/auth.routes/routes';
 
 dotenv.config();
 const port = process.env.PORT || 8000;
-mongoose.connect(`mongodb://localhost:27017/collab`, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
+mongoose.connect(`mongodb://localhost:27017/collab`, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true })
+    .then(() => console.log('connected to db'))
+    .catch(err => console.log(err));
+
 const app = express();
 
 const accessLogStream = fs.createWriteStream(
@@ -26,7 +30,7 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(passport.initialize())
 passportInit()
-app.use('/', routes);
+app.use('/', routes, routesLocal);
 
 const server = app.listen(port, () => {
     console.log(`Server started on Port ${port}`);
