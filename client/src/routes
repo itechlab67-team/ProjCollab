@@ -1,0 +1,17 @@
+'/' - main page
+    '/how-it-works' - FAQ page
+    '/join' - registration form
+        '/:network' - social network registration
+        '/confirm/:email' - email confirmation massage
+    '/login' - login form
+        '/:network' social network login
+    '/projects/:page' - all projects list
+        '/project/:projectId-title' - project idea page
+            '/edit' - edit form for project idea post
+            '/delete' - delete form for project idea post
+    '/users/:username' - user profile
+    '/users/myprofile' - user self profile
+        '/changepassword' - edit form for user password
+        '/edit' - edit form for profile
+        '/delete' - delete form for profile
+
