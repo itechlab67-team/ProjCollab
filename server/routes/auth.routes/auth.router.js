@@ -1,8 +1,9 @@
 import express from 'express';
 import jwt from 'jwt-simple';
 import passport from 'passport';
+import crypto from 'crypto';
 import User from '../../db/Mongo/Schemas/UserSchema';
-import sendEmail from '../auth.controllers/nodemailer';
+import sendEmail from '../../core/nodemailer';
 const router = express.Router();
 
 const tokenForUser = user =>{
@@ -23,16 +24,19 @@ router.post('/join', (req, res, next) => {
         if (existingUser) {
             return res.status(422).json({ error: 'Email is already use' });
         }
+        const hash = crypto.createHash('sha1').update((new Date()).valueOf().toString() + Math.random().toString()).digest('hex');
         const user = new User({
             email: email,
-            password: password
+            password: password,
+            active: false,
+            hash: hash
         });
     
         user.save((err) => {
             if (err) { 
                 return next(err); 
             }
-            sendEmail(user.email);
+            sendEmail(user.email, hash);
             res.json({ token: tokenForUser(user) });
         });
     });
@@ -41,6 +45,10 @@ router.post('/join', (req, res, next) => {
 router.post('/login', passport.authenticate('local', { /* failureMessage: 'Password is invalid', */ /* failureRedirect: 'http://localhost:3000/login' */ }), (req, res) => {
     res.status(200).send({ token: tokenForUser(req.user) });
 }); 
+
+router.get('/confirmation', (req, res) => {
+    res.json('Thanks for your confirmation!');
+})
 /* 
 router.get('/custom', async(ctx, next) => {
     await passport.authenticate('jwt', function (err, user) {
