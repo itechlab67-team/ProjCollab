@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import confirmImage from '../../services/img/confirm-email-img.png';
+import confirmImage from '../../assets/img/confirm-email-img.png';
 
 import './EmailConfirm.sass';
 

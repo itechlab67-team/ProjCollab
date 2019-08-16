@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './FormsNavbar.sass';
-import logo from '../../services/img/logo.svg';
-import close from '../../services/img/icons/close-icon.svg';
+import logo from '../../assets/img/logo.svg';
+import close from '../../assets/img/icons/close-icon.svg';
 
 export default class FormsNavbar extends Component {
     render() {

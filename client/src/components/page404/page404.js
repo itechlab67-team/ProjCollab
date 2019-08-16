@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './page404.sass';
-import img404 from '../../services/img/404image.png';
+import img404 from '../../assets/img/404image.png';
 
 export default class page404 extends Component {
     render() {

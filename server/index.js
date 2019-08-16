@@ -12,7 +12,7 @@ import dotenv from 'dotenv';
 import socketIO from 'socket.io';
 import passportInit from './routes/passport.init';
 import routes from './routes/auth.routes/auth.router.networks';
-import routesLocal from './routes/auth.routes/routes';
+import routesLocal from './routes/auth.routes/auth.router';
 
 dotenv.config();
 const port = process.env.PORT || 8000;
@@ -35,8 +35,8 @@ app.use('/', routes, routesLocal);
 
 
 const certOptions = {
-    key: fs.readFileSync(path.resolve(__dirname + '/services/certs/server.key')),
-    cert: fs.readFileSync(path.resolve(__dirname + '/services/certs/server.cert'))
+    key: fs.readFileSync(path.resolve(__dirname + '/assets/certs/server.key')),
+    cert: fs.readFileSync(path.resolve(__dirname + '/assets/certs/server.cert'))
 }
 const server = https.createServer(certOptions, app);
 

@@ -14,12 +14,12 @@ export const signinFailed = isLoginFailed => ({
 })
 
 export const signinUser = ({ email, password }) => dispatch => {
-    axios.post('https://localhost:8000/login', { email, password })
+    return axios.post('https://localhost:8000/login', { email, password })
         .then(response => {
-            dispatch(signinSuccess(true));
             localStorage.setItem('token', response.data.token);
+            return { status: dispatch(signinSuccess(true)) };
         }).catch(err => {
             console.error(err);
-            dispatch(signinFailed(true));
+            return { status: dispatch(signinFailed(true)) };
         })
 }

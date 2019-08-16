@@ -16,7 +16,7 @@ const sendEmail = email => {
         to: `${email}`, // email
         subject: 'Confirm your registration',
     }
-    fs.readFile(path.join(__dirname, '../../', 'services/confirmEmail.html'), (err, data) => {
+    fs.readFile(path.join(__dirname, '../../', 'assets/confirmEmail.html'), (err, data) => {
         const emailData = data.toString().replace('http://placeholder', 'https://localhost:3000');
         mailOptions['html'] = emailData;
         transporter.sendMail(mailOptions, (err, info) => {

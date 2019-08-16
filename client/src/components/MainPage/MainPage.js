@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../services/img/logo.svg';
-import dev from '../../services/img/for-developers-img.svg';
-import designer from '../../services/img/for-designers-img.svg';
-import startupers from '../../services/img/for-startupers-img.svg';
-import you from '../../services/img/for-you-img.svg';
+import logo from '../../assets/img/logo.svg';
+import dev from '../../assets/img/for-developers-img.svg';
+import designer from '../../assets/img/for-designers-img.svg';
+import startupers from '../../assets/img/for-startupers-img.svg';
+import you from '../../assets/img/for-you-img.svg';
 
 import './MainPage.sass';
 

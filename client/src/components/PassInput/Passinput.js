@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './PassInput.sass';
 
-import hideEye from '../../services/img/icons/eye-icon.png';
+import hideEye from '../../assets/img/icons/eye-icon.png';
 
 export default class PassInput extends Component {
     constructor(props){

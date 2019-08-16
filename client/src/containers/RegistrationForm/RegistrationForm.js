@@ -6,27 +6,26 @@ import Authentication from '../../components/Authentication/Authentication';
 
 class RegistrationForm extends Component {
     state = {
-        buttonText: 'Sign up',
-        isRedirect: false
+        isRedirect: false,
     }
     handleSubmit = data => {
-        this.setState({ buttonText: '...wait please' })
         this.props.dispatch(signupUser(data))
             .then(value => {
-                if (value.type === 'SIGNUP_SUCCESS') {
-                    this.setState({ buttonText: 'Success', isRedirect: true, email: data.email });
+                if (value.status.type === 'SIGNUP_SUCCESS') {
+                    this.setState({ isRedirect: true, email: data.email });
                     console.log('Redirect!')
                 } else {
                     console.log('Failed!')
+                    this.setState({ showEmailError: true, emailError: value.err});
                 }
             })
     }
     render() {
         return(
             <>
-            <Authentication headline='Create new account' buttonText={`Sign up`} //'Sign up'
+            <Authentication headline='Create new account' buttonText='Sign up'
                 linkText='Log in' descriptionText={`Already have an account?`} link='/login'
-                onSubmit={this.handleSubmit} />
+                onSubmit={this.handleSubmit} showEmailError={this.state.showEmailError} emailError={this.state.emailError} />
                 {this.state.isRedirect && <Redirect to={`/join/confirm?${this.state.email}`} />}
             </>
         )

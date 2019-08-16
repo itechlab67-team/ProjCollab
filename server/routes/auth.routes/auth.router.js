@@ -21,7 +21,7 @@ router.post('/join', (req, res, next) => {
             return next(err); 
         }
         if (existingUser) {
-            return res.status(422).send({ error: 'Email is in use' });
+            return res.status(422).json({ error: 'Email is already use' });
         }
         const user = new User({
             email: email,

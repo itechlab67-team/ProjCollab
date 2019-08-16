@@ -11,18 +11,17 @@ export const signupSuccess = isSignupSuccess => ({
 
 export const signupFailed = isSignupFailed => ({
     type: SIGNUP_FAILED,
-    isSignupFailed
+    isSignupFailed,
 })
 
 export const signupUser = ({ email, password }) => dispatch => {
     return axios.post('https://localhost:8000/join', { email, password })
         .then(response => {
             localStorage.setItem('token', response.data.token);
-            return dispatch(signupSuccess(true));
+            return { status: dispatch(signupSuccess(true)) };
         })
         .catch(err => {
-            console.log(err);
-            return dispatch(signupFailed(true));
+            return { status: dispatch(signupFailed(true)), err: err.response.data.error };
         })
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PassInput from '../PassInput/Passinput';
 import EmailInput from '../EmailInput/EmailInput';
 import OAuth from '../OAuth/OAuth';
-import API_URL from '../../services/constants/api-config';
+import API_URL from '../../assets/constants/api-config';
 
 import { Link } from 'react-router-dom';
 import io from 'socket.io-client';
@@ -20,7 +20,7 @@ export default class Authentication extends Component {
         email: {
             value: '',
             isValid: false
-        }
+        },
     }
     handleUserInput = (name, value, isValid) => {
         if (name === 'email') {
@@ -33,16 +33,16 @@ export default class Authentication extends Component {
     handleSubmit = e => {
         e.preventDefault();
         if (this.state.password.value === '') {
-            this.setState({ showPasswordError: true, passwordError: 'Please enter the password' })            
+            this.setState({ showPasswordError: true, passwordError: 'Please enter the password' })
         } 
         if (this.state.email.value === '') {
             this.setState({ showEmailError: true, emailError: 'Please enter the email' })
         } else {
             if (this.state.password.isValid && this.state.email.isValid) {
-                this.props.onSubmit({ email: this.state.email.value, password: this.state.password.value });
+                this.props.onSubmit({ email: this.state.email.value, password: this.state.password.value })
             } else {
                 if (!this.state.password.isValid) {
-                    this.setState({ showPasswordError: true, passwordError: 'Password must contain of digit and capital letter' })            
+                    this.setState({ showPasswordError: true, passwordError: 'Password must contain of digit and capital letter' })
                 }
                 if (!this.state.email.isValid) {
                     this.setState({ showEmailError: true, emailError: 'Email is not valid' })

@@ -9,10 +9,10 @@
 
 # architecture
 /architecture
-server/services/certs/server.key
-server/services/certs/server.cert
+server/assets/certs/server.key
+server/assets/certs/server.cert
 server/.env
 host.key
 server/.env
-server/services/certs/localhost.cer
+server/assets/certs/localhost.cer
 server/.env

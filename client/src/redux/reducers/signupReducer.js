@@ -15,7 +15,7 @@ const signup = (state = {
         case SIGNUP_FAILED:
             return {
                 ...state,
-                isLoginFailed: action.isLoginFailed
+                isLoginFailed: action.isLoginFailed,
             }
         case SIGNOUT_USER:
             return {

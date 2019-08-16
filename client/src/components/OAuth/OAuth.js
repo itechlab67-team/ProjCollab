@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import API_URL from '../../services/constants/api-config';
+import API_URL from '../../assets/constants/api-config';
 
-import github from '../../services/img/icons/github-icon.png';
-import google from '../../services/img/icons/google-icon.png';
-import facebook from '../../services/img/icons/facebook-icon.png'; 
+import github from '../../assets/img/icons/github-icon.png';
+import google from '../../assets/img/icons/google-icon.png';
+import facebook from '../../assets/img/icons/facebook-icon.png'; 
 
 import './OAuth.sass';
 
