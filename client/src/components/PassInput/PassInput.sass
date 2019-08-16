@@ -1,0 +1,45 @@
+@import '../../assets/common-styles/helpers/frompxtorem'
+@import '../../assets/common-styles/vars'
+
+$input-height: rem(50px)
+
+.password-form
+    margin-top: 5%
+.pass-input
+    outline: none
+    width: rem(280px)
+    height: $input-height
+    border: 1px solid #E0DCDA
+    border-right: none
+    border-radius: rem(10px) 0 0 rem(10px)
+    padding: 1em
+    font-size: 1rem
+.pass-input::placeholder
+    font-family: $main-font
+    font-size: 1em
+    color: #999999
+.pass-input__icon
+    justify-content: flex-end
+    border: 1px solid #E0DCDA
+    border-left: none
+    border-radius: 0 rem(10px) rem(10px) 0
+    height: $input-height
+    width: rem(20px)
+.hide-eye
+    opacity: 0.6
+    width: rem(18px)
+    height: rem(18px)
+    margin-right: 50%
+    cursor: pointer
+    color: red
+.blue-pass-border
+    border: 2px solid #2196F3
+    border-right: none
+.blue-icon-border
+    border: 2px solid #2196F3
+    border-left: none
+.red-pass-border
+    border: 2px solid #d93025
+    border-right: none
+
+

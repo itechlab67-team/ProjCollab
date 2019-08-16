@@ -1,0 +1,18 @@
+# dependencies
+/node_modules
+
+# production
+/build
+
+# ToDo
+/ToDo
+
+# architecture
+/architecture
+server/assets/certs/server.key
+server/assets/certs/server.cert
+server/.env
+host.key
+server/.env
+server/assets/certs/localhost.cer
+server/.env
